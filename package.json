@@ -20,7 +20,8 @@
   },
   "scripts": {
     "build": "rm -rf dist && babel src --out-dir dist",
-    "dev": "npm run build -- --watch"
+    "dev": "npm run build -- --watch",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@babel/cli": "^7.0.0",
@@ -82,5 +83,10 @@
     "webpack-merge": "^4.2.2",
     "winston": "2.2.0",
     "yargs": "9.0.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.1.0",
+    "@commitlint/config-conventional": "^16.0.0",
+    "husky": "^7.0.4"
   }
 }
