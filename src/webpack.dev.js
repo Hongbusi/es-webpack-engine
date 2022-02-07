@@ -7,3 +7,5 @@ import WebpackNotifierPlugin from 'es-webpack-notifier';
 import ProgressBarPlugin from 'progress-bar-webpack-plugin';
 
 import logger from './config/logger';
+
+import webpackDevMiddleware from './config/middleware';
