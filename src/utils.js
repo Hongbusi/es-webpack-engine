@@ -99,5 +99,5 @@ const isEmptyObject = obj => {
 }
 
 const firstUpperCase = str => {
-  return str.toLowerCase();
+  return str.toLowerCase().replace(/( |^)[a-z]/g, L => L.toUpperCase());
 }
