@@ -13,7 +13,7 @@ import TerserPlugin from 'terser-webpack-plugin';
 
 import options from './config/options';
 import * as entry from './config/entry';
-import * as lodaers from './config/lodaer';
+import * as loaders from './config/loader';
 
 import { fsExistsSync, isEmptyObject, filterObject } from './utils';
 

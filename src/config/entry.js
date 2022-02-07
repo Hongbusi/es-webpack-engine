@@ -140,7 +140,7 @@ if (options.onlyCopys.length) {
       copyUnmodified: true,
       force: true
     }
-    onlyCopys.push(copyitem);
+    onlyCopys.push(copyItem);
   });
 }
 
