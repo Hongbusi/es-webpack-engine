@@ -55,10 +55,29 @@ const searchDirs = (searchDir, isExistDir) => {
 
   let dirs = fs.readdirSync(searchDir);
 
-  console.log(dirs);
-
   dirs = dirs.filter(dir => {
     return dir !== '.DS_Store' && dir !== '.gitkeep' && fsExistsSync(`${searchDir}/${dir}/${isExistDir}`);
+  });
+
+  dirsArr = dirs.map(dir => {
+    return `${searchDir}/${dir}`;
+  });
+
+  return dirsArr;
+}
+
+// 需要忽略的目录
+const searchIgnoreDirs = (searchDirs, watchDirs) => {
+  let dirsArr = [];
+
+  if (!fsExistsSync(searchDirs)) {
+    return [];
+  }
+
+  const dirs = fs.readFileSync(searchDirs);
+
+  dirs = dirs.filter(dir => {
+    return dir !== '.DS_Store' && dir !== '.gitkeep' && watchDirs.indexOf(dir) === -1;
   });
 
   dirsArr = dirs.map(dir => {
