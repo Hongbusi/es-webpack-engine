@@ -101,3 +101,25 @@ const isEmptyObject = obj => {
 const firstUpperCase = str => {
   return str.toLowerCase().replace(/( |^)[a-z]/g, L => L.toUpperCase());
 }
+
+const filterObject = (obj, filterName) => {
+  let newObj = {};
+  let filterObj = {};
+
+  let filterArr = filterName.split(',');
+
+  for (const key in obj) {
+    const value = obj[key];
+
+    if (filterArr.indexOf(key) === -1) {
+      newObj[key] = value;
+    } else {
+      filterObj[key] = value;
+    }
+  }
+
+  return {
+    newObj,
+    filterObj
+  }
+}
