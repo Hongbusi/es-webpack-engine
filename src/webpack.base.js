@@ -7,7 +7,7 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 import { BundleAnalyzerPlugin  } from 'webpack-bundle-analyzer';
 import FriendlyErrorsPlugin from 'friendly-errors-webpack-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
-import MiniCssExtractPlugin, { loader } from 'mini-css-extract-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import VueLoaderPlugin from 'vue-loader/lib/plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 
