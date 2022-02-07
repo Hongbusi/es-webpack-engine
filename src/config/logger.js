@@ -28,7 +28,7 @@ const logger = new (winston.Logger)({
     })
   ],
   levels: config.levels,
-  colors: colors
+  colors: config.colors
 });
 
 export default logger;

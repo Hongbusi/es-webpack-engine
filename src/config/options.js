@@ -1,5 +1,5 @@
 import path from 'path';
-import { argv, option } from 'yargs';
+import { argv } from 'yargs';
 import { searchIgnoreDirs, isPlugin, isBundle } from '../utils';
 
 const parameters = argv.parameters ? require(path.resolve(argv.parameters)) : {};
