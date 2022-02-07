@@ -110,9 +110,9 @@ if (options.isBuildAllModule) {
 
   let module = {
     rules: [
-      loader.imageLoader('libs', options.imgName, options.imglimit),
-      loader.fontLoader('libs', options.fontName, options.fontlimit),
-      loader.mediaLoader('libs', options.mediaName)
+      loaders.imageLoader('libs', options.imgName, options.imglimit),
+      loaders.fontLoader('libs', options.fontName, options.fontlimit),
+      loaders.mediaLoader('libs', options.mediaName)
     ]
   }
 
