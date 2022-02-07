@@ -2,7 +2,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 export const imageLoader = (path, imgName, limit) => {
   return {
-    test: /\.(png|jpe?g|gif)&/,
+    test: /\.(png|jpe?g|gif)$/,
     use: [
       {
         loader: 'file-loader',
@@ -62,12 +62,12 @@ export const jsLoader = (options, exclude) => {
   }
 };
 
-export const cssLoader = (options) => {
+export const cssLoader = options => {
   return {
     test: /\.css$/,
     use: [
       {
-        loader:  options.__DEV__ || options.__DEBUG__  ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
+        loader:  options.__DEV__ || options.__DEBUG__ ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
         options
       },
       'css-loader'
@@ -75,12 +75,12 @@ export const cssLoader = (options) => {
   }
 };
 
-export const lessLoader = (options) => {
+export const lessLoader = options => {
   return {
     test: /\.less$/,
     use: [
       {
-        loader:  options.__DEV__ || options.__DEBUG__  ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
+        loader:  options.__DEV__ || options.__DEBUG__ ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
         options
       },
       'css-loader',
@@ -89,7 +89,7 @@ export const lessLoader = (options) => {
   }
 };
 
-export const vueLoader = (options) => {
+export const vueLoader = options => {
   return {
     test: /\.vue$/,
     loader: 'vue-loader',
@@ -97,7 +97,7 @@ export const vueLoader = (options) => {
   }
 }
 
-export const importsLoader = (regExp) => {
+export const importsLoader = regExp => {
   return {
     test: new RegExp(`(${regExp.join('|')})$`),
     loader: 'imports-loader?define=>false&module=>false&exports=>false&this=>window',
