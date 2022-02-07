@@ -1,5 +1,4 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import options from './options';
 
 export const imageLoader = (path, imgName, limit) => {
   return {
