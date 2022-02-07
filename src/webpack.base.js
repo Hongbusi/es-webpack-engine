@@ -88,7 +88,7 @@ for (const key in options.noParseDeps) {
 config.plugins = config.plugins.concat(new FriendlyErrorsPlugin());
 
 if (options.__DEV__) {
-  options.isEslint ? config.module.rules.push(loaders.eslintLoader()) : '';
+  options.isESlint ? config.module.rules.push(loaders.eslintLoader()) : '';
 }
 
 if (!options.__DEV__ && !options.__DEBUG__) {
