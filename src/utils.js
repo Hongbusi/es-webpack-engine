@@ -45,3 +45,25 @@ const fsExistsSync = path => {
   }
   return true;
 }
+
+const searchDirs = (searchDir, isExistDir) => {
+  let dirsArr = [];
+
+  if (!fsExistsSync(searchDir)) {
+    return [];
+  }
+
+  let dirs = fs.readdirSync(searchDir);
+
+  console.log(dirs);
+
+  dirs = dirs.filter(dir => {
+    return dir !== '.DS_Store' && dir !== '.gitkeep' && fsExistsSync(`${searchDir}/${dir}/${isExistDir}`);
+  });
+
+  dirsArr = dirs.map(dir => {
+    return `${searchDir}/${dir}`;
+  });
+
+  return dirsArr;
+}
