@@ -151,3 +151,51 @@ if (options.isBuildAllModule) {
   };
   libConfigs.push(newConfig);
 }
+
+// app 配置
+let appConfig = {};
+if (options.isBuildAllModule) {
+  appConfig = merge(config, {
+    name: 'app',
+    entry: entry.appEntry['app'],
+    module: {
+      rules: [
+        loaders.imageLoader('app', options.imgName, options.imglimit),
+        loaders.fontLoader('app', options.fontName, options.imglimit),
+        loaders.mediaLoader('app', options.mediaName)
+      ]
+    },
+    plugins: [
+      new WebpackAssetsManifest({
+        output: 'app/chunk-manifest.json'
+      }),
+    ],
+    optimization: {
+      minimizer: [new TerserPlugin()],
+      splitChunks: {
+        cacheGroups: {
+          common: {
+            name: `app/js/${options.commonsChunkFileName}`,
+            chunks: 'initial', // 入口处开始提取代码
+            minSize: 300000, // 代码最小多大，进行抽离
+            minChunks: 6,
+          }
+        }
+      }
+    }
+  });
+
+  if (options.__ANALYZER__) {
+    appConfig.plugins = appConfig.plugins.concat(new BundleAnalyzerPlugin({
+      analyzerPort: 3999
+    }))
+  };
+
+  if (fsExistsSync(`${options.globalDir}/app/${options.copyName}`)) {
+    appConfig.plugins = appConfig.plugins.concat(new CopyWebpackPlugin([{
+      from: `${options.globalDir}/app/${options.copyName}`,
+      to: `app/${options.copyName}`,
+      toType: 'dir'
+    }]))
+  }
+}
