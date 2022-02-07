@@ -90,3 +90,14 @@ const searchIgnoreDirs = (searchDirs, watchDirs) => {
 const isArray = arr => {
   return Object.prototype.toString.call(arr) === '[object Array]';
 }
+
+const isEmptyObject = obj => {
+  for (const key in obj) {
+    return false;
+  }
+  return true;
+}
+
+const firstUpperCase = str => {
+  return str.toLowerCase();
+}
