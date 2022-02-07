@@ -1,3 +1,3 @@
-#!/use/bin/env node
+#!/usr/bin/env node
 
 require('nodemon/bin/nodemon.js')
