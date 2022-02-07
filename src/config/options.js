@@ -19,7 +19,7 @@ const defaultOptions = Object.assign({
     publicPath: '/static-dist/'
   },
   libs: {},
-  onParseDeps: {},
+  noParseDeps: {},
   onlyCopys: [],
   global: {},
   externals: {
