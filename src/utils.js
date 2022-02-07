@@ -86,3 +86,7 @@ const searchIgnoreDirs = (searchDirs, watchDirs) => {
 
   return dirsArr;
 }
+
+const isArray = arr => {
+  return Object.prototype.toString.call(arr) === '[object Array]';
+}
