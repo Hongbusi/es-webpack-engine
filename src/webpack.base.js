@@ -199,3 +199,92 @@ if (options.isBuildAllModule) {
     }]))
   }
 }
+
+// 通用配置 - 插件、bundle、主题、教学活动
+let commonConfigs = [];
+if (options.isBuildAllModule || options.buildModule.length) {
+  const commonEntry = entry.commonEntry;
+
+  const commonEntryKeys = Object.keys(commonEntry);
+
+  let index = 0;
+
+  commonEntryKeys.forEach(key => {
+    let commonConfig = {};
+
+    if (isEmptyObject(commonEntry[key])) {
+      return;
+    }
+
+    const otherBundleChunks = key === 'reservationplugin' ? 10 : 5;
+    const customConfig = {
+      name: key,
+      entry: commonEntry[key],
+      module: {
+        rules: [
+          loaders.imageLoader(key, options.imgName, options.imglimit),
+          loaders.fontLoader(key, options.fontName, options.fontlimit),
+          loaders.mediaLoader(key, options.mediaName)
+        ]
+      },
+      plugins: [],
+      optimization: {
+        minimizer: [new TerserPlugin()]
+      }
+    }
+
+    if (key.indexOf('plugin') === -1) {
+      customConfig.optimization.splitChunks = {
+        cacheGroups: {
+          common: {
+            name: `${key}/js/${options.commonsChunkFileName}`,
+            chunks: 'initial',  // 入口处开始提取代码
+            minChunks: otherBundleChunks
+          }
+        }
+      }
+    }
+
+    commonConfig = merge(config, customConfig);
+
+    let commonSrcEntry = entry.commonSrcEntry;
+
+    if (fsExistsSync(`${commonSrcEntry[key]}/${options.copyName}`)) {
+      commonConfig.plugins = commonConfig.plugins.concat(new CopyWebpackPlugin([{
+        from: `${commonSrcEntry[key]}/${options.copyName}`,
+        to: `${key}/${options.copyName}`,
+        toType: 'dir'
+      }]))
+    }
+
+    if (fsExistsSync(`${commonSrcEntry[key]}/${options.isNeedCommonChunk}`)) {
+      commonConfig.plugins = commonConfig.plugins.concat(
+        new WebpackAssetsManifest({
+          output: `${key}/chunk-manifest.json`
+        }),
+      );
+    }
+
+    if (options.__ANALYZER__) {
+      commonConfig.plugins = commonConfig.plugins.concat(new BundleAnalyzerPlugin({
+        analyzerPort: `400${index}`
+      }));
+    };
+
+    commonConfigs.push(commonConfig);
+
+    index++;
+  });
+}
+
+// 总配置
+let configs = [];
+[libConfigs, appConfig, commonConfigs].forEach(item => {
+  if (item.constructor === Object && !isEmptyObject(item)) {
+    configs.push(item);
+  } else if (item.constructor === Array && item.length) {
+    configs = configs.concat(item);
+  }
+});
+
+export default configs;
