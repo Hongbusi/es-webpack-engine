@@ -34,3 +34,14 @@ const searchEntries = options => {
 
   return files;
 }
+
+// 判断文件或文件夹是否存在
+const fsExistsSync = path => {
+  try {
+    // fs.F_OK 文件对调用进程可见
+    fs.accessSync(path, fs.F_OK);
+  } catch (error) {
+    return false;
+  }
+  return true;
+}
