@@ -123,3 +123,35 @@ const filterObject = (obj, filterName) => {
     filterObj
   }
 }
+
+const isPlugin = path => {
+  return path.indexOf('Plugin') !== -1;
+}
+
+const isBundle = path => {
+  return path.indexOf('Bundle') !== -1;
+}
+
+const isTheme = path => {
+  const finalPath = path.split(sep).join('/');
+  return finalPath.indexOf('web/themes') !== -1;
+}
+
+const isActivity = path => {
+  return path.indexOf('activities') !== -1;
+}
+
+export {
+  searchEntries,
+  searchDirs,
+  searchIgnoreDirs,
+  fsExistsSync,
+  isArray,
+  isEmptyObject,
+  firstUpperCase,
+  filterObject,
+  isPlugin,
+  isBundle,
+  isTheme,
+  isActivity
+}
