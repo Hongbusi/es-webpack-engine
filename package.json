@@ -35,6 +35,7 @@
     "webpack-assets-manifest": "^5.1.0",
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-dev-middleware": "^5.3.1",
+    "webpack-merge": "^5.8.0",
     "webpackbar": "^5.0.2",
     "winston": "^3.5.1"
   }
