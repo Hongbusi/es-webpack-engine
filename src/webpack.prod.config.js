@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const WebpackBar = require('webpackbar');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const logger = require('./config/logger');
 
@@ -16,7 +17,20 @@ const options = {
   },
   plugins: [
     new WebpackBar(),
-    new WebpackAssetsManifest()
+    new WebpackAssetsManifest(),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'test/public',
+          to: '.',
+          globOptions: {
+            ignore: [
+              '**/index.html'
+            ]
+          }
+        }
+      ]
+    })
   ]
 };
 
