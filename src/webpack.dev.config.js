@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const webpack = require('webpack');
 const middleware = require('webpack-dev-middleware');
@@ -8,7 +9,12 @@ const options = require('./config/options');
 const app = express();
 
 const compiler = webpack({
-  // webpack options
+  mode: 'development',
+  entry: './test/main.js',
+  output: {
+    path: path.resolve(__dirname, '../dist'),
+    filename: 'build.js'
+  }
 });
 
 app.use(middleware(compiler, {

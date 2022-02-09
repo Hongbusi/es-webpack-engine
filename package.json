@@ -14,7 +14,9 @@
   "license": "ISC",
   "author": "",
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "dev": "node ./src/webpack.dev.config.js",
+    "build": "node ./src/webpack.prod.config.js"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",
