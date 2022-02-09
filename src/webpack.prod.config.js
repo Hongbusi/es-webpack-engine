@@ -24,8 +24,13 @@ const options = {
   module: {
     rules: [
       {
-        test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
+        test: /\.(css|less)$/i,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'css-loader',
+          'less-loader'
+        ]
       }
     ]
   },
