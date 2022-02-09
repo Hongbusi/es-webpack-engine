@@ -3,6 +3,7 @@ const express = require('express');
 const webpack = require('webpack');
 const middleware = require('webpack-dev-middleware');
 const WebpackBar = require('webpackbar');
+const WebpackAssetsManifest = require('webpack-assets-manifest');
 
 const logger = require('./config/logger');
 const options = require('./config/options');
@@ -17,7 +18,8 @@ const compiler = webpack({
     filename: 'build.js'
   },
   plugins: [
-    new WebpackBar()
+    new WebpackBar(),
+    new WebpackAssetsManifest()
   ]
 });
 

@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const WebpackBar = require('webpackbar');
+const WebpackAssetsManifest = require('webpack-assets-manifest');
 
 const logger = require('./config/logger');
 
@@ -14,7 +15,8 @@ const options = {
     filename: 'build.js'
   },
   plugins: [
-    new WebpackBar()
+    new WebpackBar(),
+    new WebpackAssetsManifest()
   ]
 };
 
