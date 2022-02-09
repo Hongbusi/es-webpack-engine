@@ -2,11 +2,11 @@ const path = require('path');
 const webpack = require('webpack');
 const WebpackBar = require('webpackbar');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const logger = require('./config/logger');
 
