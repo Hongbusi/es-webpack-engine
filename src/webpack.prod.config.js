@@ -6,7 +6,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-
+const TerserPlugin = require("terser-webpack-plugin");
 
 const logger = require('./config/logger');
 
@@ -29,9 +29,8 @@ const options = {
   },
   optimization: {
     minimizer: [
-      // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
-      // `...`,
       new CssMinimizerPlugin(),
+      new TerserPlugin()
     ],
   },
   plugins: [
