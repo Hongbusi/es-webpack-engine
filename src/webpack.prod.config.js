@@ -7,6 +7,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const logger = require('./config/logger');
 
@@ -52,7 +53,8 @@ const options = {
     // new BundleAnalyzerPlugin({
     //   analyzerPort: 8000
     // }),
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin(),
+    new CleanWebpackPlugin()
   ]
 };
 
