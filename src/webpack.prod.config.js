@@ -3,7 +3,10 @@ const webpack = require('webpack');
 const WebpackBar = require('webpackbar');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+
 
 const logger = require('./config/logger');
 
@@ -15,6 +18,21 @@ const options = {
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: 'build.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
+      }
+    ]
+  },
+  optimization: {
+    minimizer: [
+      // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
+      // `...`,
+      new CssMinimizerPlugin(),
+    ],
   },
   plugins: [
     new WebpackBar(),
@@ -34,7 +52,8 @@ const options = {
     }),
     // new BundleAnalyzerPlugin({
     //   analyzerPort: 8000
-    // })
+    // }),
+    new MiniCssExtractPlugin()
   ]
 };
 
