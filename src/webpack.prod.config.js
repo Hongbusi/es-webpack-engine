@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const WebpackBar = require('webpackbar');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 const logger = require('./config/logger');
 
@@ -30,7 +31,10 @@ const options = {
           }
         }
       ]
-    })
+    }),
+    // new BundleAnalyzerPlugin({
+    //   analyzerPort: 8000
+    // })
   ]
 };
 
