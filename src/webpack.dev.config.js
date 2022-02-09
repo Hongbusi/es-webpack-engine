@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const webpack = require('webpack');
 const middleware = require('webpack-dev-middleware');
+const WebpackBar = require('webpackbar');
 
 const logger = require('./config/logger');
 const options = require('./config/options');
@@ -14,7 +15,10 @@ const compiler = webpack({
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: 'build.js'
-  }
+  },
+  plugins: [
+    new WebpackBar()
+  ]
 });
 
 app.use(middleware(compiler, {

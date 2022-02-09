@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const WebpackBar = require('webpackbar');
 
 const logger = require('./config/logger');
 
@@ -11,7 +12,10 @@ const options = {
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: 'build.js'
-  }
+  },
+  plugins: [
+    new WebpackBar()
+  ]
 };
 
 const compiler = webpack(options, (err, stats) => {
