@@ -4,6 +4,6 @@ module.exports = {
   ],
   compact: true,
   plugins: [
-    // '@babel/plugin-proposal-class-properties'
+    '@babel/plugin-proposal-class-properties'
   ]
 }
