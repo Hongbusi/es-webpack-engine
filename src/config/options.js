@@ -125,4 +125,4 @@ const options = Object.assign({}, defaultOptions, {
   ignoredDirs
 });
 
-export default options;
+module.exports = options;
