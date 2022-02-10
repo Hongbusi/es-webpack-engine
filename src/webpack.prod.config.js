@@ -9,8 +9,10 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { merge } = require('webpack-merge');
+const { VueLoaderPlugin } = require('vue-loader');
 
 const logger = require('./config/logger');
+const loaders = require('./config/loader');
 
 logger.info('building for production...');
 
@@ -23,15 +25,17 @@ const options = {
   },
   module: {
     rules: [
-      {
-        test: /\.(css|less)$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'css-loader',
-          'less-loader'
-        ]
-      }
+      // {
+      //   test: /\.(css|less)$/i,
+      //   use: [
+      //     MiniCssExtractPlugin.loader,
+      //     'css-loader',
+      //     'less-loader'
+      //   ]
+      // },
+      loaders.cssLoader(),
+      loaders.lessLoader(),
+      loaders.vueLoader()
     ]
   },
   optimization: {
@@ -60,15 +64,16 @@ const options = {
     //   analyzerPort: 8000
     // }),
     new MiniCssExtractPlugin(),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new VueLoaderPlugin()
   ]
 };
 
 const compiler = webpack(options, (err, stats) => {
   if (err) {
-    logger.error(err.stack || err);
+    console.error(err.stack || err);
     if (err.details) {
-      logger.error(err.details);
+      console.error(err.details);
     }
     return;
   }
@@ -76,11 +81,11 @@ const compiler = webpack(options, (err, stats) => {
   const info = stats.toJson();
 
   if (stats.hasErrors()) {
-    logger.error(info.errors);
+    console.error(info.errors);
   }
 
   if (stats.hasWarnings()) {
-    logger.warn(info.warnings);
+    console.warn(info.warnings);
   }
 
   logger.info('Compiled successfully!')
