@@ -1,6 +1,6 @@
 {
   "name": "es-webpack-engine",
-  "version": "1.0.0",
+  "version": "5.0.0",
   "description": "",
   "keywords": [],
   "homepage": "https://github.com/Hongbusi/es-webpack-engine#readme",
@@ -14,36 +14,11 @@
   "license": "ISC",
   "author": "",
   "scripts": {
-    "prepare": "husky install",
-    "dev": "node ./src/webpack.dev.config.js",
-    "build": "node ./src/webpack.prod.config.js"
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
     "husky": "^7.0.4"
-  },
-  "dependencies": {
-    "@babel/core": "^7.17.2",
-    "@babel/preset-env": "^7.16.11",
-    "babel-loader": "^8.2.3",
-    "clean-webpack-plugin": "^4.0.0",
-    "copy-webpack-plugin": "^10.2.4",
-    "css-loader": "^6.6.0",
-    "css-minimizer-webpack-plugin": "^3.4.1",
-    "express": "^4.17.2",
-    "less": "^4.1.2",
-    "less-loader": "^10.2.0",
-    "mini-css-extract-plugin": "^2.5.3",
-    "terser-webpack-plugin": "^5.3.1",
-    "vue-loader": "15.8.3",
-    "vue-template-compiler": "2.6.11",
-    "webpack": "^5.68.0",
-    "webpack-assets-manifest": "^5.1.0",
-    "webpack-bundle-analyzer": "^4.5.0",
-    "webpack-dev-middleware": "^5.3.1",
-    "webpack-merge": "^5.8.0",
-    "webpackbar": "^5.0.2",
-    "winston": "^3.5.1"
   }
 }
