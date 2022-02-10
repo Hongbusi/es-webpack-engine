@@ -6,7 +6,7 @@ const merge = require('webpack-merge');
 const { VueLoaderPlugin } = require('vue-loader');
 const WebpackBar = require('webpackbar')
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const TerserWebpackPlugin = require('terser-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
@@ -71,7 +71,8 @@ const config = {
       /moment[\\\/]locale$/,
       /^\.\/(zh-cn|en-gb)+\.js$/
     ),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new WebpackBar()
   ]
 }
 
