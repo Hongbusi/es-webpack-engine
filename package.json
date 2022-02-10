@@ -22,7 +22,8 @@
     "nodemon": "1.12.1",
     "os": "0.1.1",
     "path": "0.12.7",
-    "winston": "2.2.0"
+    "winston": "2.2.0",
+    "yargs": "9.0.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",
