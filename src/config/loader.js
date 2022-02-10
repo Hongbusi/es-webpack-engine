@@ -20,7 +20,10 @@ const mediaLoader = (path, name) => {
 
 const jsLoader = (options, exclude) => {
   return {
-
+    test: /\.js[x]?$/,
+    use: [
+      'babel-loader'
+    ]
   }
 }
 

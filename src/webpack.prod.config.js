@@ -35,13 +35,14 @@ const options = {
       // },
       loaders.cssLoader(),
       loaders.lessLoader(),
-      loaders.vueLoader()
+      loaders.vueLoader(),
+      loaders.jsLoader()
     ]
   },
   optimization: {
     minimizer: [
-      new CssMinimizerPlugin(),
-      new TerserPlugin()
+      // new CssMinimizerPlugin(),
+      // new TerserPlugin()
     ],
   },
   plugins: [
