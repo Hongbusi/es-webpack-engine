@@ -160,9 +160,10 @@ if (options.onlyCopys.length) {
     copyitem = {
       from : `${options.nodeModulesDir}/${item.name}`,
       to: `libs/${item.name}`,
-      ignore: item.ignore,
-      copyUnmodified: true,
-      force: true
+      force: true,
+      globOptions: {
+        ignore: item.ignore
+      }
     }
     onlyCopys.push(copyitem);
   })

@@ -142,7 +142,9 @@ if (options.isBuildAllModule) {
     entry: newLibEntry,
     module,
     plugins: [
-      new CopyWebpackPlugin(entry.onlyCopys)
+      new CopyWebpackPlugin({
+        patterns: entry.onlyCopys
+      })
     ],
     optimization: {
       minimizer: [new TerserPlugin()]
@@ -196,11 +198,15 @@ if (options.isBuildAllModule) {
   };
 
   if (fsExistsSync(`${options.globalDir}/app/${options.copyName}`)) {
-    appConfig.plugins = appConfig.plugins.concat(new CopyWebpackPlugin([{
-      from: `${options.globalDir}/app/${options.copyName}`,
-      to: `app/${options.copyName}`,
-      toType: 'dir'
-    }]))
+    appConfig.plugins = appConfig.plugins.concat(new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: `${options.globalDir}/app/${options.copyName}`,
+          to: `app/${options.copyName}`,
+          toType: 'dir'
+        }
+      ]
+    }));
   }
 }
 
@@ -253,11 +259,15 @@ if (options.isBuildAllModule || options.buildModule.length) {
     let commonSrcEntry = entry.commonSrcEntry;
 
     if (fsExistsSync(`${commonSrcEntry[key]}/${options.copyName}`)) {
-      commonConfig.plugins = commonConfig.plugins.concat(new CopyWebpackPlugin([{
-        from: `${commonSrcEntry[key]}/${options.copyName}`,
-        to: `${key}/${options.copyName}`,
-        toType: 'dir'
-      }]))
+      commonConfig.plugins = commonConfig.plugins.concat(new CopyWebpackPlugin({
+        patterns: [
+          {
+            from: `${commonSrcEntry[key]}/${options.copyName}`,
+            to: `${key}/${options.copyName}`,
+            toType: 'dir'
+          }
+        ]
+      }));
     }
 
     if (fsExistsSync(`${commonSrcEntry[key]}/${options.isNeedCommonChunk}`)) {
