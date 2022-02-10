@@ -94,7 +94,17 @@ const vueLoader = options => {
 const importsLoader = regExp => {
   return {
     test: new RegExp(`(${regExp.join('|')})$`),
-    loader: 'imports-loader?define=>false&module=>false&exports=>false&this=>window'
+    use: [
+      {
+        loader: 'imports-loader',
+        options: {
+          additionalCode: 'var define = false',
+          wrapper: {
+            thisArg: 'window'
+          }
+        }
+      }
+    ]
   }
 };
 
