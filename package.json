@@ -16,6 +16,13 @@
   "scripts": {
     "prepare": "husky install"
   },
+  "dependencies": {
+    "cross-env": "5.0.5",
+    "glob": "7.1.2",
+    "nodemon": "1.12.1",
+    "os": "0.1.1",
+    "path": "0.12.7"
+  },
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
