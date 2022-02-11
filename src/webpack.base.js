@@ -45,14 +45,14 @@ const config = {
         options.nodeModulesDir,
       ]),
       loaders.cssLoader({
-        minimize: options.__DEV__ || options.__DEBUG__ ? false : true,
-        hmr: options.__DEV__,
-        reloadAll: true
+        // minimize: options.__DEV__ || options.__DEBUG__ ? false : true,
+        // hmr: options.__DEV__,
+        // reloadAll: true
       }),
       loaders.lessLoader({
-        minimize: options.__DEV__ || options.__DEBUG__ ? false : true,
-        hmr: options.__DEV__,
-        reloadAll: true
+        // minimize: options.__DEV__ || options.__DEBUG__ ? false : true,
+        // hmr: options.__DEV__,
+        // reloadAll: true
       })
     ]
   },
@@ -93,11 +93,11 @@ for (let key in options.noParseDeps) {
 //   options.isESlint ? config.module.rules.push(loaders.eslintLoader()) : '';
 // }
 
-if (!options.__DEV__ && !options.__DEBUG__) {
-  config.plugins = config.plugins.concat(new CssMinimizerWebpackPlugin());
-} else {
-  config.devtool = options.__DEVTOOL__;
-}
+// if (!options.__DEV__ && !options.__DEBUG__) {
+//   config.plugins = config.plugins.concat(new CssMinimizerWebpackPlugin());
+// } else {
+//   config.devtool = options.__DEVTOOL__;
+// }
 
 // lib 配置
 let libConfigs = [];

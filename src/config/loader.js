@@ -62,7 +62,7 @@ const cssLoader = options => {
     use: [
       {
         loader:  options.__DEV__ || options.__DEBUG__  ?  'vue-style-loader' : MiniCssExtractPlugin.loader,
-        options
+        // options
       },
       'css-loader'
     ]
@@ -75,7 +75,7 @@ const lessLoader = options => {
     use: [
       {
         loader:  options.__DEV__ || options.__DEBUG__  ?  'vue-style-loader' : MiniCssExtractPlugin.loader,
-        options
+        // options
       },
       'css-loader',
       'less-loader'
@@ -98,10 +98,8 @@ const importsLoader = regExp => {
       {
         loader: 'imports-loader',
         options: {
-          additionalCode: 'var define = false',
-          wrapper: {
-            thisArg: 'window'
-          }
+        //   additionalCode: 'var define = false',
+          wrapper: 'window'
         }
       }
     ]
