@@ -23,5 +23,5 @@ module.exports = (compiler, publicPath) => {
     // lazy: false
   };
 
-  return webpackDevMiddleware(compiler, webpackDevMiddlewareOptions);
+  return WebpackDevMiddleware(compiler, webpackDevMiddlewareOptions);
 }
