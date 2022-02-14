@@ -55,6 +55,11 @@ const config = {
       })
     ]
   },
+  optimization: {
+    minimizer: [
+      new CssMinimizerWebpackPlugin()
+    ]
+  },
   plugins: [
     new MiniCssExtractPlugin({
       filename: "[name].css",
@@ -92,7 +97,7 @@ for (let key in options.noParseDeps) {
 // }
 
 // if (!options.__DEV__ && !options.__DEBUG__) {
-//   config.plugins = config.plugins.concat(new CssMinimizerWebpackPlugin());
+//   config.optimization.minimizer.push(new CssMinimizerWebpackPlugin());
 // } else {
 //   config.devtool = options.__DEVTOOL__;
 // }
