@@ -58,7 +58,17 @@ const vueLoader = options => {
 
 const importsLoader = regExp => {
   return {
-
+    test: new RegExp(`(${regExp.join('|')})$`),
+    // test: /example\.js$/,
+    use: [
+      {
+        loader: 'imports-loader',
+        options: {
+          wrapper: 'window',
+          additionalCode: "var myVariable = false; var define = false;",
+        }
+      },
+    ],
   }
 }
 

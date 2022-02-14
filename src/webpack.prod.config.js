@@ -23,6 +23,11 @@ const options = {
     path: path.resolve(__dirname, '../dist'),
     filename: 'build.js'
   },
+  resolve: {
+    alias: {
+      'test': path.resolve(__dirname, '../test/test.js')
+    }
+  },
   module: {
     rules: [
       // {
@@ -36,7 +41,8 @@ const options = {
       loaders.cssLoader(),
       loaders.lessLoader(),
       loaders.vueLoader(),
-      loaders.jsLoader()
+      loaders.jsLoader(),
+      // loaders.importsLoader()
     ]
   },
   optimization: {
@@ -69,6 +75,14 @@ const options = {
     new VueLoaderPlugin()
   ]
 };
+
+const noParse = [
+  path.resolve(__dirname, '../test/example.js')
+]
+
+// console.log(noParse);
+
+options.module.rules.push(loaders.importsLoader(noParse))
 
 const compiler = webpack(options, (err, stats) => {
   if (err) {
