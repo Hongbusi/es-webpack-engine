@@ -162,7 +162,7 @@ if (options.onlyCopys.length) {
       to: `libs/${item.name}`,
       force: true,
       globOptions: {
-        ignore: item.ignore
+        ignore: item.ignore || []
       }
     }
     onlyCopys.push(copyitem);
