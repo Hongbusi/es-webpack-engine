@@ -110,6 +110,11 @@ if (options.isBuildAllModule || options.buildModule.length) {
 }
 
 let libEntry = {};
+/**
+ * let libEntry = {
+ *   libs/base: ['libs/base.js']
+ * };
+ */
 if (options.isBuildAllModule) {
   for (let key in options.libs) {
     libEntry[`libs/${key}`] = [];

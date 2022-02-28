@@ -5,7 +5,7 @@ const options = require('./options');
 module.exports = (compiler, publicPath) => {
   const webpackDevMiddlewareOptions = {
     publicPath,
-    // quiet: false,
+    // quiet: false, // 是否减少控制台日志记录的数量
     // noInfo: false,
     // progress: true,
     // stats: {
