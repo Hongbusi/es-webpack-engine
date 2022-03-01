@@ -98,8 +98,8 @@ const importsLoader = regExp => {
       {
         loader: 'imports-loader',
         options: {
-          // additionalCode: 'var define = false; var module = false; var exports = false',
-          // wrapper: 'window'
+          additionalCode: 'var define = false; var module = false; var exports = false',
+          wrapper: 'window'
         }
       }
     ]
