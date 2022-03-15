@@ -1,0 +1,17 @@
+{
+  "name": "edusoho-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development node ../src/webpack.dev.js --parameters webpack.config.js",
+    "build": "cross-env NODE_ENV=production node ../src/webpack.prod.js --parameters webpack.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "codeages-design": "0.1.12",
+    "cross-env": "^7.0.3",
+    "jquery": "3.2.1"
+  }
+}
