@@ -87,7 +87,7 @@ for (let key in options.noParseDeps) {
   const depPath = path.resolve(options.nodeModulesDir, options.noParseDeps[key]);
   config.resolve.alias[key] = depPath;
   config.module.noParse.push(depPath);
-  config.module.rules.push(loaders.importsLoader(config.module.noParse));
+  // config.module.rules.push(loaders.importsLoader(config.module.noParse));
 }
 
 // config.plugins = config.plugins.concat(new FriendlyErrorsPlugin());
